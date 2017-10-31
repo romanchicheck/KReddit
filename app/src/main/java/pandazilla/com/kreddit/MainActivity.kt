@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+        if (savedInstanceState == null) {
+            changeFragment(NewsFragment())
+        }
     }
 
     private fun changeFragment(fragment:Fragment, cleanStack:Boolean = false) {
