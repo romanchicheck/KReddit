@@ -7,4 +7,6 @@ data class RedditNewsItem (
     val created: Long,
     val thumbnail: String,
     val url: String
-)
+) : ViewType {
+    override fun getViewType() = AdapterConstants.NEWS
+}
