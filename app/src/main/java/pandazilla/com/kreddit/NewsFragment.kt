@@ -20,6 +20,13 @@ class NewsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         news_list.setHasFixedSize(true)
         news_list.layoutManager = LinearLayoutManager(context)
+        initAdapter()
+    }
+
+    private fun initAdapter() {
+        if(news_list.adapter == null) {
+            news_list.adapter = NewsAdapter()
+        }
     }
 
 }
