@@ -2,7 +2,6 @@ package pandazilla.com.kreddit
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import com.squareup.picasso.Picasso
 import pandazilla.com.kreddit.R.id.*
 
 class NewsDelegateAdapter : ViewTypeDelegateAdapter {
