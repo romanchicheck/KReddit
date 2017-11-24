@@ -1,23 +1,22 @@
 package pandazilla.com.kreddit
 
 import android.support.v4.app.Fragment
+import kotlinx.coroutines.experimental.Job
 import rx.subscriptions.CompositeSubscription
 
 
-open class RxBaseFragment() : Fragment() {
+open class RxBaseFragment : Fragment() {
 
-    protected var subscriptions = CompositeSubscription()
+    protected var job: Job? = null
 
     override fun onResume() {
         super.onResume()
-        subscriptions = CompositeSubscription()
+        job = null
     }
 
     override fun onPause() {
         super.onPause()
-        if (!subscriptions.isUnsubscribed) {
-            subscriptions.unsubscribe()
-        }
-        subscriptions.clear()
+        job?.cancel()
+        job = null
     }
 }

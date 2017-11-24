@@ -6,29 +6,33 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.Toolbar
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
         if (savedInstanceState == null) {
             changeFragment(NewsFragment())
         }
     }
 
-    private fun changeFragment(fragment:Fragment, cleanStack:Boolean = false) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        if (cleanStack) {clearBackStack()}
-        fragmentTransaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out,
-                R.anim.abc_popup_enter, R.anim.abc_popup_exit)
-        fragmentTransaction.replace(R.id.activity_base_content, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+    fun changeFragment(f: Fragment, cleanStack: Boolean = false) {
+        val ft = supportFragmentManager.beginTransaction()
+        if (cleanStack) {
+            clearBackStack()
+        }
+        ft.setCustomAnimations(
+                R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_popup_enter, R.anim.abc_popup_exit)
+        ft.replace(R.id.activity_base_content, f)
+        ft.addToBackStack(null)
+        ft.commit()
     }
 
-    private fun clearBackStack() {
+    fun clearBackStack() {
         val manager = supportFragmentManager
         if (manager.backStackEntryCount > 0) {
             val first = manager.getBackStackEntryAt(0)
@@ -36,11 +40,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Finish activity when reaching the last fragment.
+     */
     override fun onBackPressed() {
-        super.onBackPressed()
-        val manager = supportFragmentManager
+        val fragmentManager = supportFragmentManager
         if (fragmentManager.backStackEntryCount > 1) {
-            manager.popBackStack()
+            fragmentManager.popBackStack()
         } else {
             finish()
         }
