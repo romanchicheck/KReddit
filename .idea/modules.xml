@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KReddit.iml" filepath="$PROJECT_DIR$/KReddit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/KReddit.iml" filepath="$PROJECT_DIR$/.idea/KReddit.iml" />
+      <module fileurl="file://D:\Projects\KReddit\KReddit.iml" filepath="D:\Projects\KReddit\KReddit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

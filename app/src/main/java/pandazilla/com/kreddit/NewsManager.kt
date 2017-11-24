@@ -2,7 +2,7 @@ package pandazilla.com.kreddit
 
 import rx.Observable
 
-class NewsManager(private val api: RestAPI = RestAPI()) {
+class NewsManager(private val api: NewsAPI = RestAPI()) {
 
     /**
      *
